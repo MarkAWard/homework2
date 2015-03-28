@@ -70,6 +70,10 @@ if (taskid == MASTER){
     }
 
   /* Get final sum and print sample results */  
+  /*
+    SOLUTION: Need to perform a reduce here as well to get correct
+    and desired result
+  */
   MPI_Reduce(&mysum, &sum, 1, MPI_FLOAT, MPI_SUM, MASTER, MPI_COMM_WORLD);
   printf("Sample results: \n");
   offset = 0;
