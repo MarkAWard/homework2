@@ -23,6 +23,9 @@ float update(int myoffset, int chunk, int myid);
 MPI_Status status;
 
 /***** Initializations *****/
+/*
+  SOLUTION: Initialize and Finalize
+*/
 MPI_Init(&argc, &argv);
 MPI_Comm_size(MPI_COMM_WORLD, &numtasks);
 if (numtasks % 4 != 0) {
@@ -106,6 +109,9 @@ if (taskid > MASTER) {
   } /* end of non-master */
 
 
+/*
+  SOLUTION: Initialize and Finalize
+*/
 MPI_Finalize();
 return 0;
 }   /* end of main */
