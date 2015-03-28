@@ -3,7 +3,6 @@
 * DESCRIPTION: 
 *   This program gives the wrong result for Final sum - compare to mpi_array.
 *   The number of MPI tasks must be divisible by 4.
-*   Hint: Every process needs to be included in a collective communication call.
 * AUTHOR: Blaise Barney 
 * LAST REVISED: 01/24/09
 ******************************************************************************/
