@@ -33,6 +33,10 @@ if (rank == 0) {
 
 if (rank == 1) {
   for (i=0; i<10; i++) {
+    /*
+      SOLUTION: the first process sent an int so one should receive 
+      data of the same type. Switched *beta* to be type int.
+     */
     MPI_Irecv(&beta, 1, MPI_INT, 0, tag, MPI_COMM_WORLD, &reqs[i]);
     MPI_Wait(&reqs[i], &stats[i]);
     printf("Task %d received = %d\n",rank,beta);
