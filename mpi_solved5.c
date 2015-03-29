@@ -52,12 +52,14 @@ TASK 1: finished 30
 Count= 100  Time= 0.120884 sec.
 TASK 1: finished 40
 
- The first task uses a non blocking send so it continues to send data until the 
- buffer becomes full. At that point, after 70 loops, we see that both the tasks
- begin to move at the same rate as the send becomes blocking until there is space
+ The first task uses a blocking send that returns to the program once the buffer 
+ is available for reuse so it continues to send data until the buffer
+ becomes full. At that point, after 70 loops, we see that both the tasks
+ begin to move at the same rate as the send blocks/waits until there is space
  in the buffer
 
- SOLUTION: use a synchronous blocking send. The output with extra printing is
+ SOLUTION: use a synchronous blocking send where the sender will not return
+ until matching receive is posted. The output with extra printing is
 
 mpi_bug5 has started...
 Count= 10  Time= 0.109197 sec.
