@@ -34,7 +34,8 @@ int main( int argc, char *argv[])
   /* Number of random numbers per processor (this should be increased
    * for actual tests or could be passed in through the command line */
   N = atoi(argv[1]);
-  nsamples = atoi(argv[2]);
+  nsamples = (N / 100) > 100 ? 100 : (N / 100);
+  nsamples = nsamples > 5 ? nsamples : 5;
 
   /* seed random number generator differently on every core */
   srand((unsigned int) (rank + 393919));
@@ -44,7 +45,7 @@ int main( int argc, char *argv[])
   for (i = 0; i < N; ++i) {
     vec[i] = rand();
   }
-  printf("rank: %d, first entry: %d\n", rank, vec[0]);
+  //printf("rank: %d, first entry: %d, nsamples: %d\n", rank, vec[0], nsamples);
 
   /* sort locally */
   qsort(vec, N, sizeof(int), compare);
